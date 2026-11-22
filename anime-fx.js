@@ -345,4 +345,13 @@
     addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(shift); } }, { passive: true });
     shift();
   }
+
+  /* ---------- 20. Фото в «Три кроки» теж зсувається під час прокрутки ---------- */
+  const howSec = $('.how'), howBg = $('.how__bg');
+  if (howSec && howBg) {
+    let t2 = false;
+    const sh2 = () => { const r = howSec.getBoundingClientRect(); const k = (r.top + Math.min(r.height, innerHeight) / 2 - innerHeight / 2) / innerHeight; howBg.style.setProperty('--how-shift', (k * -40).toFixed(1) + 'px'); t2 = false; };
+    addEventListener('scroll', () => { if (!t2) { t2 = true; requestAnimationFrame(sh2); } }, { passive: true });
+    sh2();
+  }
 })();

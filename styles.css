@@ -1005,3 +1005,40 @@ html,body{overscroll-behavior-x:none}
   .how__blob--b{width:300px;height:300px;left:-30%;top:40%}
 }
 @media (prefers-reduced-motion:reduce){.how__blob,.phone__ring{animation:none}}
+
+/* ============================================================
+   «ТРИ КРОКИ»: справжнє фото (пуровер) на фоні, як у відгуках
+   ============================================================ */
+.how{background:#14201b;color:#f1ecfa}
+.how__bg{-webkit-mask:none;mask:none;inset:0}
+.how__blob{display:none}
+.how__bg::before{content:'';position:absolute;inset:-6% 0;background:url("img/how-bg.jpg") 60% center/cover no-repeat;transform:translateY(var(--how-shift,0px)) scale(1.06)}
+.how__bg::after{content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(60% 50% at 78% 38%,rgba(183,217,92,.16),transparent 70%),
+    linear-gradient(90deg,rgba(20,32,27,.94) 0%,rgba(20,32,27,.78) 55%,rgba(20,32,27,.55) 100%),
+    linear-gradient(180deg,rgba(20,32,27,.35) 0%,rgba(20,32,27,0) 30%,rgba(20,32,27,.85) 62%,#14201b 100%)}
+.how .section-num{color:#b7d95c}
+.how .section-head h2,.how .section-head h2 *{color:#f1ecfa}
+.steps--list .step{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14);color:#f1ecfa;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.steps--list .step:hover{background:rgba(255,255,255,.12);box-shadow:none}
+.steps--list .step h3{color:#fff}
+.steps--list .step p{color:rgba(241,236,250,.68)}
+.steps--list .step.is-active{background:rgba(255,255,255,.16);border-color:rgba(183,217,92,.55);box-shadow:0 24px 50px rgba(0,0,0,.3)}
+.steps--list .step__icon,.steps--list .step:nth-child(2) .step__icon,.steps--list .step:nth-child(3) .step__icon{background:rgba(255,255,255,.1)}
+.step__bar{background:#b7d95c}
+.phone__ring text{fill:rgba(241,236,250,.32)}
+.phone__frame{box-shadow:0 40px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.08)}
+@media (max-width:900px){
+  .how__bg::after{background:linear-gradient(180deg,rgba(20,32,27,.7) 0%,rgba(20,32,27,.82) 40%,rgba(20,32,27,.92) 70%,#14201b 100%)}
+}
+/* фото лише на верхню частину блоку, щоб не було сильно збільшене */
+.how__bg::before{inset:-60px 0 auto;height:1150px;background-position:55% 40%}
+.how__bg::after{background:
+    radial-gradient(900px 500px at 78% 420px,rgba(183,217,92,.14),transparent 70%),
+    linear-gradient(90deg,rgba(20,32,27,.92) 0%,rgba(20,32,27,.72) 55%,rgba(20,32,27,.5) 100%),
+    linear-gradient(180deg,rgba(20,32,27,.3) 0,rgba(20,32,27,0) 300px,rgba(20,32,27,.6) 800px,#14201b 1080px)}
+@media (max-width:900px){
+  .how__bg::before{height:1300px}
+  .how__bg::after{background:linear-gradient(180deg,rgba(20,32,27,.66) 0,rgba(20,32,27,.8) 600px,rgba(20,32,27,.92) 1000px,#14201b 1280px)}
+}
