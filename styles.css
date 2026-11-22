@@ -771,3 +771,12 @@ body.is-ready .scroll-cue{opacity:1;transform:translateX(-50%);transition-delay:
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:600;background:linear-gradient(90deg,var(--accent),var(--yellow));transform-origin:0 50%;transform:scaleX(0);pointer-events:none}
 .float-card strong{display:inline-block}
 .btn>*:not(.ripple),.pill>*:not(.ripple),.cart-btn>*:not(.ripple){position:relative;z-index:1}
+
+/* Сторінка не «гуляє» вбік на телефоні: нічого не виходить за ширину екрана */
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%}
+main,footer,.hero,.section{overflow-x:clip}
+.drawer{visibility:hidden;transition:transform .5s var(--ease),visibility 0s linear .5s}
+.drawer.is-open{visibility:visible;transition:transform .5s var(--ease),visibility 0s}
+@media(max-width:640px){
+  .marquee{transform:rotate(-1.2deg)}
+}
