@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
 </head>
 <body class="intro-active">
 
@@ -366,10 +366,45 @@
           <span class="section-num">02 / ЯК ЦЕ ПРАЦЮЄ</span>
           <h2 data-split>ТРИ КРОКИ ДО КАВИ</h2>
         </div>
-        <div class="steps">
-          <article class="step reveal"><span class="step__num">01</span><div class="step__icon">☕</div><h3>Обираєте</h3><p>Гортайте меню й додавайте все, що хочеться. Можна навіть двічі.</p></article>
-          <article class="step reveal"><span class="step__num">02</span><div class="step__icon">✳</div><h3>Ми варимо</h3><p>Обсмажуємо, збиваємо, наливаємо. Усе — з того самого градуса.</p></article>
-          <article class="step reveal"><span class="step__num">03</span><div class="step__icon">✦</div><h3>Забираєте</h3><p>Кілька хвилин — і тепле замовлення чекає на вас на стійці. Смачного!</p></article>
+        <div class="how__demo">
+          <div class="steps steps--list" role="tablist" aria-label="Як замовити">
+          <article class="step reveal" data-step="0" tabindex="0" role="tab" aria-selected="true"><span class="step__bar" aria-hidden="true"></span><span class="step__num">01</span><div class="step__icon">☕</div><h3>Обираєте</h3><p>Гортайте меню й додавайте все, що хочеться. Можна навіть двічі.</p></article>
+          <article class="step reveal" data-step="1" tabindex="0" role="tab" aria-selected="false"><span class="step__bar" aria-hidden="true"></span><span class="step__num">02</span><div class="step__icon">✳</div><h3>Ми варимо</h3><p>Обсмажуємо, збиваємо, наливаємо. Усе — з того самого градуса.</p></article>
+          <article class="step reveal" data-step="2" tabindex="0" role="tab" aria-selected="false"><span class="step__bar" aria-hidden="true"></span><span class="step__num">03</span><div class="step__icon">✦</div><h3>Забираєте</h3><p>Кілька хвилин — і тепле замовлення чекає на вас на стійці. Смачного!</p></article>
+          </div>
+          <div class="phone reveal" aria-hidden="true">
+            <div class="phone__frame">
+              <div class="phone__island"></div>
+              <div class="phone__screen">
+                <div class="ph-status"><span>9:41</span><span class="ph-status__icons"><i></i><i></i><i></i></span></div>
+                <!-- Екран 1: меню -->
+                <div class="ph-scr ph-scr--menu is-on">
+                  <div class="ph-top"><b>ГРАДУС<sup>°</sup></b><span class="ph-cart">🛒<em class="ph-cart__n">0</em></span></div>
+                  <p class="ph-hint">Меню · гаряче</p>
+                  <div class="ph-item"><img src="img/menu-1.jpg" alt=""><div><b>Еспресо «Градус»</b><small>60 грн</small></div><span class="ph-plus">+</span></div>
+                  <div class="ph-item ph-item--target"><img src="img/menu-2.jpg" alt=""><div><b>Капучино класичне</b><small>85 грн</small></div><span class="ph-plus">+</span></div>
+                  <div class="ph-item"><img src="img/menu-7.jpg" alt=""><div><b>Круасан з мигдалем</b><small>80 грн</small></div><span class="ph-plus">+</span></div>
+                  <div class="ph-toast">Додано: Капучино ✓</div>
+                  <span class="ph-finger"></span>
+                </div>
+                <!-- Екран 2: готуємо -->
+                <div class="ph-scr ph-scr--brew">
+                  <p class="ph-hint">Замовлення №214</p>
+                  <h4 class="ph-title">Готуємо вашу каву</h4>
+                  <div class="ph-cup"><div class="ph-cup__body"><span class="ph-cup__fill"></span></div><span class="ph-cup__handle"></span><span class="ph-steam"></span><span class="ph-steam"></span></div>
+                  <div class="ph-progress"><span></span></div>
+                  <div class="ph-timer">~ <b class="ph-timer__n">5:00</b> хв</div>
+                  <ul class="ph-chips"><li class="is-done">Прийнято</li><li class="is-now">Варимо</li><li>Готово</li></ul>
+                </div>
+                <!-- Екран 3: готово -->
+                <div class="ph-scr ph-scr--ready">
+                  <div class="ph-lock"><span class="ph-lock__time">9:46</span><span class="ph-lock__date">неділя, 22 листопада</span></div>
+                  <div class="ph-note"><div class="ph-note__app"><i>Г°</i>ГРАДУС <span>зараз</span></div><b>Ваша кава готова ☕</b><p>Замовлення №214 чекає на стійці. Смачного!</p></div>
+                  <div class="ph-check"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="showcase reveal" id="showcase" tabindex="0" aria-roledescription="карусель"></div>
       </div>
@@ -509,8 +544,9 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="script.js?v=5"></script>
-  <script src="anime-fx.js?v=5"></script>
-  <script src="showcase.js?v=5"></script>
+  <script src="script.js?v=6"></script>
+  <script src="anime-fx.js?v=6"></script>
+  <script src="showcase.js?v=6"></script>
+  <script src="how-demo.js?v=6"></script>
 </body>
 </html>
