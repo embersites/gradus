@@ -780,3 +780,4 @@ main,footer,.hero,.section{overflow-x:clip}
 @media(max-width:640px){
   .marquee{transform:rotate(-1.2deg)}
 }
+html,body{overscroll-behavior-x:none}
