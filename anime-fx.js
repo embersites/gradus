@@ -151,9 +151,6 @@
       const count = $('#cartCount');
       anime.remove(count);
       anime({ targets: count, scale: [1, 1.7, 1], rotate: [0, -20, 0], duration: 800, easing: 'easeOutElastic(1, .4)', complete: clean([count]) });
-      const cartBtn = $('#cartBtn');
-      anime.remove(cartBtn);
-      anime({ targets: cartBtn, translateX: [0, -6, 6, -4, 4, 0], duration: 500, easing: 'easeInOutSine', complete: clean([cartBtn]) });
     });
   }
 

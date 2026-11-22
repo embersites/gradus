@@ -484,11 +484,7 @@
   window.addEventListener('scroll', () => {
     const y = window.scrollY;
     header.classList.toggle('is-scrolled', y > 40);
-    if (!nav.classList.contains('is-open') && !modal.classList.contains('is-open')) {
-      header.classList.toggle('is-hidden', y > 500 && y > lastY + 4);
-    } else {
-      header.classList.remove('is-hidden');
-    }
+    // шапка завжди на місці — не ховається під час прокрутки
     lastY = y;
   }, { passive: true });
 
