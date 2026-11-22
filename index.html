@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=8">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body class="intro-active">
 
@@ -361,6 +361,7 @@
 
     <!-- ===== КАК ЗАКАЗАТЬ ===== -->
     <section class="how section" id="how">
+      <div class="how__bg" aria-hidden="true"><i class="how__blob how__blob--a"></i><i class="how__blob how__blob--b"></i><i class="how__blob how__blob--c"></i></div>
       <div class="container">
         <div class="section-head reveal">
           <span class="section-num">02 / ЯК ЦЕ ПРАЦЮЄ</span>
@@ -368,11 +369,12 @@
         </div>
         <div class="how__demo">
           <div class="steps steps--list" role="tablist" aria-label="Як замовити">
-          <article class="step reveal" data-step="0" tabindex="0" role="tab" aria-selected="true"><span class="step__bar" aria-hidden="true"></span><span class="step__num">01</span><div class="step__icon">☕</div><h3>Обираєте</h3><p>Гортайте меню й додавайте все, що хочеться. Можна навіть двічі.</p></article>
-          <article class="step reveal" data-step="1" tabindex="0" role="tab" aria-selected="false"><span class="step__bar" aria-hidden="true"></span><span class="step__num">02</span><div class="step__icon">✳</div><h3>Ми варимо</h3><p>Обсмажуємо, збиваємо, наливаємо. Усе — з того самого градуса.</p></article>
-          <article class="step reveal" data-step="2" tabindex="0" role="tab" aria-selected="false"><span class="step__bar" aria-hidden="true"></span><span class="step__num">03</span><div class="step__icon">✦</div><h3>Забираєте</h3><p>Кілька хвилин — і тепле замовлення чекає на вас на стійці. Смачного!</p></article>
+          <article class="step reveal" data-step="0" tabindex="0" role="tab" aria-selected="true"><span class="step__bar" aria-hidden="true"></span><div class="step__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><rect x="8" y="4" width="16" height="24" rx="4"/><path d="M12 11h8M12 16h8M12 21h5"/></svg></div><h3>Обираєте</h3><p>Гортайте меню й додавайте все, що хочеться. Можна навіть двічі.</p></article>
+          <article class="step reveal" data-step="1" tabindex="0" role="tab" aria-selected="false"><span class="step__bar" aria-hidden="true"></span><div class="step__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 14h15v6a6 6 0 0 1-6 6h-3a6 6 0 0 1-6-6z"/><path d="M22 16h2a3 3 0 0 1 0 6h-2"/><path d="M12 5c-1.5 2 1.5 3 0 5M17 5c-1.5 2 1.5 3 0 5"/></svg></div><h3>Ми варимо</h3><p>Обсмажуємо, збиваємо, наливаємо. Усе — з того самого градуса.</p></article>
+          <article class="step reveal" data-step="2" tabindex="0" role="tab" aria-selected="false"><span class="step__bar" aria-hidden="true"></span><div class="step__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M7 11h18l-2 16H9z"/><path d="M12 11V9a4 4 0 0 1 8 0v2"/><path d="M12.5 19l2.5 2.5 4.5-5"/></svg></div><h3>Забираєте</h3><p>Кілька хвилин — і тепле замовлення чекає на вас на стійці. Смачного!</p></article>
           </div>
-          <div class="phone reveal" aria-hidden="true">
+          <div class="phone reveal">
+            <svg class="phone__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="phRing" d="M100,100 m-88,0 a88,88 0 1,1 176,0 a88,88 0 1,1 -176,0"/></defs><text><textPath href="#phRing">ОБИРАЄТЕ · МИ ВАРИМО · ЗАБИРАЄТЕ · ОБИРАЄТЕ · МИ ВАРИМО · ЗАБИРАЄТЕ ·</textPath></text></svg>
             <div class="phone__frame">
               <div class="phone__island"></div>
               <div class="phone__screen">
@@ -381,12 +383,11 @@
                 <div class="ph-scr ph-scr--menu is-on">
                   <div class="ph-top"><b>ГРАДУС<sup>°</sup></b><span class="ph-cart">🛒<em class="ph-cart__n">0</em></span></div>
                   <p class="ph-hint">Меню · гаряче</p>
-                  <div class="ph-item"><img src="img/menu-1.jpg" alt=""><div><b>Еспресо «Градус»</b><small>60 грн</small></div><span class="ph-plus">+</span></div>
-                  <div class="ph-item ph-item--target"><img src="img/menu-2.jpg" alt=""><div><b>Капучино класичне</b><small>85 грн</small></div><span class="ph-plus">+</span></div>
-                  <div class="ph-item"><img src="img/menu-7.jpg" alt=""><div><b>Круасан з мигдалем</b><small>80 грн</small></div><span class="ph-plus">+</span></div>
+                  <div class="ph-list" tabindex="-1">
+                    <div class="ph-item ph-item--target"><img src="img/menu-2.jpg" alt=""><div><b>Капучино класичне</b><small>85 грн</small></div><span class="ph-plus">+</span><span class="ph-finger"></span></div>
+                  </div>
                   <div class="ph-toast">Додано: Капучино ✓</div>
-                  <span class="ph-finger"></span>
-                </div>
+                  </div>
                 <!-- Екран 2: готуємо -->
                 <div class="ph-scr ph-scr--brew">
                   <p class="ph-hint">Замовлення №214</p>
@@ -544,9 +545,9 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="script.js?v=8"></script>
-  <script src="anime-fx.js?v=8"></script>
-  <script src="showcase.js?v=8"></script>
-  <script src="how-demo.js?v=8"></script>
+  <script src="script.js?v=9"></script>
+  <script src="anime-fx.js?v=9"></script>
+  <script src="showcase.js?v=9"></script>
+  <script src="how-demo.js?v=9"></script>
 </body>
 </html>

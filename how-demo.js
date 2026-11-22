@@ -11,13 +11,43 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const DUR = 4800;
   const $ = s => demo.querySelector(s);
-  let cur = 0, timer = null, visible = false, hover = false, tl = null;
+  let cur = 0, timer = null, visible = false, hover = false, tl = null, touching = false, touchT = null;
+
+  // Меню в телефоні: беремо всі позиції з каталогу, капучино (ціль «тапу») — другим
+  const list = $('.ph-list');
+  const target0 = $('.ph-item--target');
+  if (list && target0) {
+    const cards = Array.from(document.querySelectorAll('.product-card')).filter(c => !c.classList.contains('product-card--out') && c.dataset.id !== '2');
+    const mk = c => {
+      const img = c.querySelector('.product-media--photo img'); if (!img) return null;
+      const name = (c.querySelector('.product-name') || {}).textContent || '';
+      const price = (c.querySelector('.pill__price strong') || {}).textContent || '';
+      const d = document.createElement('div'); d.className = 'ph-item';
+      d.innerHTML = `<img src="${img.getAttribute('src')}" alt=""><div><b></b><small></small></div><span class="ph-plus">+</span>`;
+      d.querySelector('b').textContent = name.trim(); d.querySelector('small').textContent = price.replace(/\s+/g, ' ').trim();
+      return d;
+    };
+    const els = cards.map(mk).filter(Boolean);
+    if (els[0]) list.insertBefore(els[0], target0);
+    els.slice(1).forEach(e => list.appendChild(e));
+    // поки людина гортає — кроки не перемикаються
+    const hold = () => { touching = true; clearTimeout(timer); clearTimeout(touchT); demo.classList.add('is-paused'); };
+    const release = () => { clearTimeout(touchT); touchT = setTimeout(() => { touching = false; if (!hover) { demo.classList.remove('is-paused'); schedule(); } }, 3500); };
+    ['touchstart', 'pointerdown', 'wheel', 'scroll'].forEach(ev => list.addEventListener(ev, () => { hold(); release(); }, { passive: true }));
+    // перетягування мишкою на ноутбуці
+    let dy = null, st = 0;
+    list.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; dy = e.clientY; st = list.scrollTop; list.setPointerCapture(e.pointerId); });
+    list.addEventListener('pointermove', e => { if (dy !== null) list.scrollTop = st - (e.clientY - dy); });
+    const end = () => { dy = null; };
+    list.addEventListener('pointerup', end); list.addEventListener('pointercancel', end);
+  }
 
   function play(i) {
     if (tl) { tl.pause(); tl = null; }
     if (!A || reduced) { finalState(i); return; }
     if (i === 0) {
       const n = $('.ph-cart__n'); n.textContent = '0';
+      if (list && !touching) list.scrollTop = 0;
       const target = $('.ph-item--target'); const finger = $('.ph-finger'); const toast = $('.ph-toast');
       A.set(finger, { opacity: 0, scale: 1, translateY: 40 }); A.set(toast, { opacity: 0, translateY: 20 }); A.set(target, { scale: 1 });
       tl = A.timeline({ easing: 'easeOutQuad' })
@@ -67,7 +97,7 @@
   }
   function schedule() {
     clearTimeout(timer);
-    if (!visible || hover || reduced) return;
+    if (!visible || hover || touching || reduced) return;
     timer = setTimeout(() => { show((cur + 1) % steps.length); schedule(); }, DUR);
   }
   demo.style.setProperty('--dur', DUR + 'ms');
@@ -76,7 +106,7 @@
     s.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(k); schedule(); } });
   });
   demo.addEventListener('mouseenter', () => { hover = true; demo.classList.add('is-paused'); clearTimeout(timer); });
-  demo.addEventListener('mouseleave', () => { hover = false; demo.classList.remove('is-paused'); show(cur); schedule(); });
+  demo.addEventListener('mouseleave', () => { hover = false; if (!touching) demo.classList.remove('is-paused'); schedule(); });
   new IntersectionObserver(es => es.forEach(e => {
     const was = visible; visible = e.isIntersecting;
     if (visible && !was) { show(cur); schedule(); }

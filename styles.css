@@ -950,3 +950,58 @@ html,body{overscroll-behavior-x:none}
 .slide blockquote{color:#fff}
 .slider__viewport{border-radius:24px}
 .slide{margin:0}
+
+/* ============================================================
+   «ТРИ КРОКИ»: живий фон, лінійні іконки, без цифр, гортання в телефоні
+   ============================================================ */
+.how{position:relative;isolation:isolate;
+  background:
+    radial-gradient(circle at 1px 1px,rgba(43,86,69,.13) 1.2px,transparent 1.3px) 0 0/26px 26px,
+    linear-gradient(180deg,#f1ecfa 0%,#eef2e6 55%,#f1ecfa 100%)}
+.how__bg{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
+  -webkit-mask:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(180deg,transparent,#000 12%,#000 88%,transparent)}
+.how__blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.7;animation:howBlob 18s ease-in-out infinite alternate}
+.how__blob--a{width:520px;height:520px;right:4%;top:14%;background:#cfe8b5}
+.how__blob--b{width:440px;height:440px;left:-6%;top:30%;background:#d9c8ee;animation-duration:22s;animation-delay:-6s}
+.how__blob--c{width:360px;height:360px;right:28%;top:2%;background:#e9dcc8;opacity:.55;animation-duration:26s;animation-delay:-12s}
+@keyframes howBlob{0%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-30px) scale(1.08)}100%{transform:translate(-30px,40px) scale(.95)}}
+.how .section-head,.how__demo,.how .showcase{position:relative}
+
+/* іконки замість емодзі */
+.steps--list .step__num{display:none}
+.steps--list .step__icon,.steps--list .step:nth-child(2) .step__icon,.steps--list .step:nth-child(3) .step__icon{
+  width:60px;height:60px;margin-top:-30px;border-radius:18px;background:var(--dark);transform:none;font-size:0;transition:background .35s,transform .45s var(--ease)}
+.step__icon svg{width:30px;height:30px;fill:none;stroke:#b7d95c;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s}
+.steps--list .step.is-active .step__icon{background:#b7d95c;transform:rotate(-6deg) scale(1.05)}
+.steps--list .step.is-active .step__icon svg{stroke:var(--dark)}
+.steps--list .step{background:rgba(255,255,255,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-color:rgba(43,86,69,.12)}
+.steps--list .step.is-active{background:#fff}
+.steps--list .step{padding-right:26px}
+
+/* обертове кільце з текстом за телефоном */
+.phone{position:relative}
+.phone__frame{z-index:1}
+.phone__ring{position:absolute;left:50%;top:50%;width:520px;height:520px;margin:-260px 0 0 -260px;z-index:0;pointer-events:none;animation:phRing 40s linear infinite;overflow:visible}
+.phone__ring text{font-family:var(--font-head);font-size:9.5px;font-weight:700;letter-spacing:.32em;fill:rgba(43,86,69,.28)}
+@keyframes phRing{to{transform:rotate(360deg)}}
+
+/* меню в телефоні можна гортати */
+.ph-scr--menu{display:flex;flex-direction:column;padding-bottom:0}
+.ph-list{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:none;padding:2px 2px 80px;margin:0 -2px;outline:none;
+  -webkit-mask:linear-gradient(180deg,#000 85%,transparent);mask:linear-gradient(180deg,#000 85%,transparent)}
+.ph-list::-webkit-scrollbar{display:none}
+.ph-item{position:relative}
+.ph-finger{left:auto;right:4px;top:50%;margin-top:-19px}
+.ph-toast{z-index:3}
+.phone__screen{cursor:grab}
+
+@media (max-width:900px){
+  .steps--list .step__icon,.steps--list .step:nth-child(2) .step__icon,.steps--list .step:nth-child(3) .step__icon{width:52px;height:52px;margin-top:-26px}
+  .step__icon svg{width:26px;height:26px}
+  .steps--list .step{padding-right:18px}
+  .phone__ring{width:420px;height:420px;margin:-210px 0 0 -210px}
+  .ph-finger{left:auto;top:50%}
+  .how__blob--a{width:340px;height:340px;right:-20%;top:8%}
+  .how__blob--b{width:300px;height:300px;left:-30%;top:40%}
+}
+@media (prefers-reduced-motion:reduce){.how__blob,.phone__ring{animation:none}}
