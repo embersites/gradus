@@ -331,4 +331,18 @@
     anime.set(bar, { scaleX: max > 0 ? scrollY / max : 0 });
   };
   addEventListener('scroll', prog, { passive: true }); prog();
+
+  /* ---------- 19. Фото у відгуках повільно зсувається під час прокрутки ---------- */
+  const rev = $('.reviews');
+  if (rev) {
+    let tick = false;
+    const shift = () => {
+      const r = rev.getBoundingClientRect();
+      const k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+      rev.style.setProperty('--rv-shift', (k * -40).toFixed(1) + 'px');
+      tick = false;
+    };
+    addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(shift); } }, { passive: true });
+    shift();
+  }
 })();
