@@ -1,3 +1,9 @@
+/* Сайт завжди відкривається з самого верху (навіть якщо в посиланні є #розділ) */
+try { history.scrollRestoration = 'manual'; } catch (e) {}
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+window.scrollTo(0, 0);
+addEventListener('load', () => window.scrollTo(0, 0));
+
 /* ============================================================
    ГРАДУС — интерактив и моушн
    Чистый JS, без зависимостей. Работает при открытии файла напрямую.
