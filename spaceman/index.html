@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cut">
+<title>SPACEMAN Мерефа — НЛО-бургери та кава</title>
+<meta name="description" content="НЛО-бургери та кава в Мерефі. Меню, ціни й замовлення з доставкою по Мерефі та передмістю.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0716;--bg2:#140c26;--card:#1a1131;--line:rgba(190,150,255,.16);--ink:#f3eeff;--muted:#a99cc8;--neon:#b06bff;--neon2:#ff5fd2;--lime:#c9ff5c;--r:20px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden;padding-bottom:90px}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+
+/* зорі */
+.stars{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(1px 1px at 12% 18%,#fff8,transparent),radial-gradient(1px 1px at 72% 12%,#fff9,transparent),
+   radial-gradient(1.5px 1.5px at 40% 66%,#fff7,transparent),radial-gradient(1px 1px at 88% 52%,#fff8,transparent),
+   radial-gradient(1px 1px at 22% 84%,#fff6,transparent),radial-gradient(1.5px 1.5px at 62% 36%,#fff8,transparent),
+   radial-gradient(1px 1px at 94% 88%,#fff7,transparent),radial-gradient(1px 1px at 6% 46%,#fff6,transparent),
+   radial-gradient(60% 40% at 85% 0%,rgba(176,107,255,.22),transparent 70%),
+   radial-gradient(50% 35% at 0% 60%,rgba(255,95,210,.12),transparent 70%),var(--bg)}
+
+/* шапка */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,7,22,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:Unbounded;font-weight:900;font-size:18px;letter-spacing:.06em;color:#fff;text-shadow:0 0 10px var(--neon),0 0 24px rgba(176,107,255,.7)}
+.logo small{display:block;font:700 9px/1 Manrope;letter-spacing:.32em;color:var(--muted);text-shadow:none;margin-top:3px}
+.call{display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:99px;border:1px solid var(--line);font-weight:800;font-size:13px}
+.call svg{width:16px;height:16px;stroke:var(--lime);fill:none;stroke-width:2}
+
+/* герой */
+.hero{padding:34px 0 26px;position:relative}
+.hero__tag{display:inline-flex;gap:8px;align-items:center;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--lime);border:1px solid rgba(201,255,92,.35);padding:7px 12px;border-radius:99px}
+.hero__tag i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px var(--lime);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.25}}
+.hero h1{font-family:Unbounded;font-weight:900;font-size:clamp(36px,9vw,76px);line-height:.98;letter-spacing:-.03em;margin:18px 0 14px}
+.hero h1 span{background:linear-gradient(90deg,var(--neon),var(--neon2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:15px;max-width:440px;line-height:1.55}
+.hero__btns{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 22px;border-radius:16px;font-weight:800;font-size:15px}
+.btn--main{background:linear-gradient(90deg,var(--neon),var(--neon2));color:#fff;box-shadow:0 10px 30px rgba(176,107,255,.35)}
+.btn--ghost{border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.ufo{position:absolute;right:-10px;top:10px;width:min(46vw,380px);opacity:.95;animation:float 5s ease-in-out infinite;pointer-events:none}
+@keyframes float{50%{transform:translateY(-12px) rotate(-3deg)}}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:26px}
+.fact{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
+.fact b{display:block;font-family:Unbounded;font-size:15px}
+.fact span{font-size:11.5px;color:var(--muted)}
+
+/* меню */
+.menu{padding:18px 0 10px}
+.menu h2{font-family:Unbounded;font-size:26px;letter-spacing:-.02em;margin-bottom:14px}
+.tabs{position:sticky;top:62px;z-index:15;display:flex;gap:8px;overflow-x:auto;padding:10px 0;margin:0 -16px;padding-left:16px;padding-right:16px;background:linear-gradient(var(--bg) 70%,transparent);scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;height:40px;padding:0 16px;border-radius:99px;border:1px solid var(--line);font-weight:800;font-size:13px;color:var(--muted);white-space:nowrap}
+.tab.on{background:#fff;color:#140c26;border-color:#fff}
+.cat{scroll-margin-top:120px;margin:18px 0 8px;font:800 11px/1 Manrope;letter-spacing:.24em;text-transform:uppercase;color:var(--neon)}
+.grid{display:grid;gap:10px}
+.item{display:grid;grid-template-columns:1fr auto;gap:6px 12px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.item h3{font-family:Unbounded;font-size:15px;letter-spacing:-.01em;line-height:1.25}
+.item p{grid-column:1/-1;font-size:13px;color:var(--muted);line-height:1.45}
+.price{font-family:Unbounded;font-size:16px;white-space:nowrap;color:var(--lime)}
+.price small{font:700 11px Manrope;color:var(--muted)}
+.row{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.combo{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:700;cursor:pointer;user-select:none}
+.combo input{appearance:none;width:38px;height:22px;border-radius:99px;background:#2a1f45;position:relative;transition:.25s;cursor:pointer;flex:none}
+.combo input::after{content:'';position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.25s}
+.combo input:checked{background:var(--neon)}
+.combo input:checked::after{left:19px}
+.add{height:40px;padding:0 16px;border-radius:12px;background:rgba(176,107,255,.16);border:1px solid rgba(176,107,255,.45);font-weight:800;font-size:13px;transition:transform .15s}
+.add:active{transform:scale(.94)}
+.add.done{background:var(--lime);color:#140c26;border-color:var(--lime)}
+.note{font-size:12.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+.extras{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.extras span{font-size:12px;font-weight:700;padding:7px 11px;border-radius:99px;border:1px dashed var(--line);color:var(--muted)}
+.extras b{color:var(--ink)}
+
+/* контакти */
+.contacts{margin:26px 0 10px;display:grid;gap:10px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.c b{display:block;font-family:Unbounded;font-size:14px;margin-bottom:4px}
+.c span{font-size:13px;color:var(--muted)}
+footer{text-align:center;font-size:11px;color:#6d6290;padding:26px 0 10px}
+
+/* кошик */
+.bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:30;max-width:560px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 18px;border-radius:20px;background:#fff;color:#140c26;box-shadow:0 20px 50px rgba(0,0,0,.5);transform:translateY(130%);transition:transform .4s cubic-bezier(.2,1,.3,1)}
+.bar.show{transform:none}
+.bar__sum b{font-family:Unbounded;font-size:17px;display:block}
+.bar__sum span{font-size:12px;color:#6d6290;font-weight:700}
+.bar .btn{height:46px;background:#140c26;color:#fff}
+.sheet{position:fixed;inset:0;z-index:40;background:rgba(5,3,12,.6);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center}
+.sheet.open{display:flex}
+.sheet__box{width:100%;max-width:560px;max-height:88vh;overflow:auto;background:var(--bg2);border:1px solid var(--line);border-radius:24px 24px 0 0;padding:20px 16px 24px;animation:up .35s cubic-bezier(.2,1,.3,1)}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.sheet h3{font-family:Unbounded;font-size:20px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.x{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);font-size:18px}
+.line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:8px;background:#2a1f45;font-weight:800}
+.tot{display:flex;justify-content:space-between;font-weight:800;margin:14px 0 4px}
+.tot b{font-family:Unbounded;color:var(--lime)}
+.f{display:grid;gap:10px;margin-top:14px}
+.f input{height:48px;border-radius:14px;border:1px solid var(--line);background:#0f0a1d;color:var(--ink);padding:0 14px;font:600 15px Manrope;width:100%}
+.f .btn{width:100%;margin-top:4px}
+.ok{text-align:center;padding:20px 0 6px}
+.ok .big{font-size:56px}
+.ok b{display:block;font-family:Unbounded;font-size:20px;margin:10px 0 6px}
+.ok p{color:var(--muted);font-size:14px}
+.demo{position:fixed;top:72px;right:12px;z-index:25;font-size:10px;font-weight:800;letter-spacing:.12em;padding:5px 9px;border-radius:99px;background:rgba(201,255,92,.14);color:var(--lime);border:1px solid rgba(201,255,92,.3)}
+
+@media (min-width:760px){
+  .grid{grid-template-columns:1fr 1fr}
+  .hero{padding:70px 0 40px}
+  .contacts{grid-template-columns:repeat(3,1fr)}
+  .facts{max-width:520px}
+}
+@media (max-width:600px){.ufo{width:190px;top:120px;right:-34px;opacity:.6;z-index:-1}.hero__tag{font-size:10px;letter-spacing:.12em}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#">SPACEMAN<small>МЕРЕФА</small></a>
+  <a class="call" href="tel:+380934998823"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>093 499 88 23</a>
+</div></header>
+
+<main class="wrap">
+  <section class="hero">
+    <svg class="ufo" viewBox="0 0 200 140" aria-hidden="true">
+      <defs><linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#b06bff"/><stop offset="1" stop-color="#ff5fd2"/></linearGradient>
+      <linearGradient id="beam" y1="0" y2="1"><stop offset="0" stop-color="#c9ff5c" stop-opacity=".45"/><stop offset="1" stop-color="#c9ff5c" stop-opacity="0"/></linearGradient></defs>
+      <path d="M70 70 L40 138 H160 L130 70Z" fill="url(#beam)"/>
+      <ellipse cx="100" cy="52" rx="34" ry="28" fill="#2a1f45" stroke="#b06bff" stroke-width="2"/>
+      <ellipse cx="100" cy="66" rx="84" ry="20" fill="url(#g1)"/>
+      <ellipse cx="100" cy="62" rx="84" ry="14" fill="none" stroke="#fff" stroke-opacity=".25"/>
+      <circle cx="52" cy="68" r="4" fill="#c9ff5c"/><circle cx="76" cy="73" r="4" fill="#c9ff5c"/><circle cx="100" cy="75" r="4" fill="#c9ff5c"/><circle cx="124" cy="73" r="4" fill="#c9ff5c"/><circle cx="148" cy="68" r="4" fill="#c9ff5c"/>
+    </svg>
+    <span class="hero__tag"><i></i>Доставка по Мерефі та передмістю</span>
+    <h1>НЛО-<br>бургери<br><span>та кава</span></h1>
+    <p>Повне меню з цінами — одразу на екрані. Обирайте, додавайте в кошик і замовляйте за хвилину, без дзвінків і файлів.</p>
+    <div class="hero__btns">
+      <a class="btn btn--main" href="#menu">Відкрити меню</a>
+      <a class="btn btn--ghost" href="tel:+380934998823">Подзвонити</a>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>8</b><span>НЛО-бургерів</span></div>
+      <div class="fact"><b>від 50 ₴</b><span>доставка</span></div>
+      <div class="fact"><b>комбо</b><span>фрі + напій</span></div>
+    </div>
+  </section>
+
+  <section class="menu" id="menu">
+    <h2>Меню</h2>
+    <nav class="tabs" id="tabs"></nav>
+    <div id="cats"></div>
+    <div class="extras" aria-label="Добавки">
+      <span>Картопляні діпи <b>+10</b></span><span>Бекон <b>+25</b></span><span>Моцарела <b>+30</b></span><span>Гострий перець <b>+20</b></span><span>Чипси з бекону <b>+50</b></span><span>Соус <b>15 / 25</b></span>
+    </div>
+    <p class="note">Комбо-меню: бургер + картопля фрі (150 г) + напій на вибір (0,33 л). Соуси: кетчуп, сирний, барбекю, кисло-солодкий, часниковий, солодкий чилі.</p>
+  </section>
+
+  <section class="contacts">
+    <div class="c"><b>Доставка</b><span>По Мерефі та передмістю, від 50 грн</span></div>
+    <div class="c"><b>Телефон</b><span><a href="tel:+380934998823">093 499 88 23</a></span></div>
+    <div class="c"><b>Instagram</b><span>@spaceman.cafe</span></div>
+  </section>
+  <footer>Демо-версія сайту · зроблено ember.sites</footer>
+</main>
+
+<div class="bar" id="bar">
+  <div class="bar__sum"><b id="sum">0 ₴</b><span id="cnt">0 позицій</span></div>
+  <button class="btn" id="open">Оформити</button>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Кошик">
+  <div class="sheet__box" id="box"></div>
+</div>
+
+<script>
+const MENU = [
+  {cat:'НЛО-бургери', items:[
+    {n:'Чизбургер', d:'Яловичина, сир Чеддер, цибулева сальса, бочкові огірки, томати, фірмовий соус', p:140, c:250},
+    {n:'Чизбургер з беконом', d:'Класичний чизбургер + хрусткий бекон', p:165, c:275},
+    {n:'Дабл Чизбургер', d:'Дві котлети та подвійний сир', p:190, c:300},
+    {n:'Дабл Чизбургер з беконом', d:'Дві котлети, подвійний сир і бекон', p:215, c:325},
+    {n:'Алоха maxi', d:'Курка, ананас, сир Чеддер, томати, цибуля Марс, соус BBQ', p:170, c:280},
+    {n:'Цезар', d:'Курка, пармезан, айсберг, томати, авторський соус Цезар', p:150, c:260},
+    {n:'Чикен карі', d:'Курячі нагетси, карамелізована цибуля Марс, Чеддер, томати, пікантний соус Карі', p:140, c:230},
+    {n:'Том Ям', d:'Тигрові креветки, курка, печериці, айсберг, Чеддер, соус Схуг та Айолі-Том Ям', p:185, c:295}
+  ]},
+  {cat:'Фритюр', items:[
+    {n:'Картопля фрі', d:'Хрустка, золотиста', p:75},
+    {n:'Картопляні діпи', d:'Скибочки з хрусткою скоринкою', p:85},
+    {n:'Нагетси · 6 шт', d:'Курячі, з соусом на вибір', p:100},
+    {n:'Нагетси · 9 шт', d:'Курячі, з соусом на вибір', p:125}
+  ]},
+  {cat:'Салати й боули', items:[
+    {n:'Цезар з куркою', d:'Куряче філе, айсберг, пармезан, томати, багет, соус Цезар · 290 г', p:210},
+    {n:'Цезар з креветкою', d:'Тигрова креветка-гриль (6 шт), айсберг, пармезан, томати, багет · 280 г', p:260},
+    {n:'Бургер-боул', d:'Біфштекс з яловичини, айсберг, цибуля Марс, кунжут, томати, діпи, бургерний соус · 370 г', p:230}
+  ]}
+];
+const cart = {};
+const $ = s => document.querySelector(s);
+const tabs = $('#tabs'), cats = $('#cats');
+MENU.forEach((g, gi) => {
+  const id = 'cat' + gi;
+  tabs.insertAdjacentHTML('beforeend', `<button class="tab${gi ? '' : ' on'}" data-go="${id}">${g.cat}</button>`);
+  cats.insertAdjacentHTML('beforeend', `<h3 class="cat" id="${id}">${g.cat}</h3><div class="grid">${g.items.map((it, ii) => `
+    <article class="item">
+      <h3>${it.n}</h3><span class="price" data-pr="${gi}-${ii}">${it.p} <small>₴</small></span>
+      <p>${it.d}</p>
+      <div class="row">
+        ${it.c ? `<label class="combo"><input type="checkbox" data-combo="${gi}-${ii}">Комбо · ${it.c} ₴</label>` : '<span></span>'}
+        <button class="add" data-add="${gi}-${ii}">+ У кошик</button>
+      </div>
+    </article>`).join('')}</div>`);
+});
+tabs.addEventListener('click', e => { const b = e.target.closest('[data-go]'); if (!b) return; document.getElementById(b.dataset.go).scrollIntoView({behavior:'smooth'}); });
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { tabs.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t.dataset.go === e.target.id)); } }), {rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('.cat').forEach(c => io.observe(c));
+
+document.addEventListener('change', e => {
+  const k = e.target.dataset.combo; if (!k) return;
+  const [g, i] = k.split('-').map(Number); const it = MENU[g].items[i];
+  document.querySelector(`[data-pr="${k}"]`).innerHTML = (e.target.checked ? it.c : it.p) + ' <small>₴</small>';
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-add]'); if (!b) return;
+  const k = b.dataset.add; const [g, i] = k.split('-').map(Number); const it = MENU[g].items[i];
+  const combo = document.querySelector(`[data-combo="${k}"]`)?.checked;
+  const key = k + (combo ? 'c' : '');
+  cart[key] = cart[key] || {n: it.n + (combo ? ' (комбо)' : ''), p: combo ? it.c : it.p, q: 0};
+  cart[key].q++;
+  b.classList.add('done'); b.textContent = '✓ Додано';
+  setTimeout(() => { b.classList.remove('done'); b.textContent = '+ У кошик'; }, 1100);
+  render();
+});
+function render() {
+  const lines = Object.values(cart).filter(l => l.q > 0);
+  const sum = lines.reduce((s, l) => s + l.p * l.q, 0), cnt = lines.reduce((s, l) => s + l.q, 0);
+  $('#sum').textContent = sum + ' ₴';
+  $('#cnt').textContent = cnt + (cnt === 1 ? ' позиція' : cnt < 5 && cnt > 1 ? ' позиції' : ' позицій');
+  $('#bar').classList.toggle('show', cnt > 0);
+  return {lines, sum};
+}
+function sheet(html) { $('#box').innerHTML = html; $('#sheet').classList.add('open'); }
+function close() { $('#sheet').classList.remove('open'); }
+$('#sheet').addEventListener('click', e => { if (e.target.id === 'sheet' || e.target.closest('.x')) close(); });
+function showCart() {
+  const {lines, sum} = render();
+  if (!lines.length) return close();
+  sheet(`<h3>Ваше замовлення <button class="x" aria-label="Закрити">×</button></h3>
+    ${Object.entries(cart).filter(([,l]) => l.q > 0).map(([k, l]) => `<div class="line"><span>${l.n}</span><span class="qty"><button data-q="${k}" data-d="-1">−</button>${l.q}<button data-q="${k}" data-d="1">+</button><b>${l.p * l.q} ₴</b></span></div>`).join('')}
+    <div class="tot"><span>Разом</span><b>${sum} ₴</b></div>
+    <p class="note">+ доставка від 50 ₴ по Мерефі</p>
+    <form class="f" id="form">
+      <input required name="name" placeholder="Ваше ім'я" autocomplete="name">
+      <input required name="phone" type="tel" placeholder="Телефон" autocomplete="tel">
+      <input required name="addr" placeholder="Адреса доставки" autocomplete="street-address">
+      <button class="btn btn--main" type="submit">Замовити · ${sum} ₴</button>
+    </form>`);
+}
+$('#open').addEventListener('click', showCart);
+$('#box').addEventListener('click', e => {
+  const b = e.target.closest('[data-q]'); if (!b) return;
+  cart[b.dataset.q].q += Number(b.dataset.d); showCart();
+});
+$('#box').addEventListener('submit', e => {
+  e.preventDefault();
+  Object.keys(cart).forEach(k => delete cart[k]); render();
+  sheet(`<div class="ok"><div class="big">🛸</div><b>Замовлення прийнято!</b><p>Це демо-версія — на справжньому сайті замовлення одразу прийде вам у Telegram або на телефон.</p><br><button class="btn btn--main x" style="width:100%;border-radius:16px">Добре</button></div>`);
+});
+</script>
+</body>
+</html>
