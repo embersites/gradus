@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=10">
+  <link rel="stylesheet" href="styles.css?v=11">
 </head>
 <body class="intro-active">
 
@@ -132,11 +132,10 @@
     </section>
 
     <!-- ===== БЕГУЩАЯ СТРОКА ===== -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>СВІЖА ОБСМАЖКА ✳ РУЧНЕ ЗАВАРЮВАННЯ ✳ КАВА З ХАРАКТЕРОМ ✳ ВИПІЧКА ЩОРАНКУ ✳</span>
-        <span>СВІЖА ОБСМАЖКА ✳ РУЧНЕ ЗАВАРЮВАННЯ ✳ КАВА З ХАРАКТЕРОМ ✳ ВИПІЧКА ЩОРАНКУ ✳</span>
-      </div>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="bean" viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="7" ry="10" transform="rotate(30 12 12)"/><path d="M15.5 4.5c-4 3-1 7.5-4 10.5-1.6 1.6-3.3 2.4-4.6 2.6" fill="none" stroke-width="1.8" stroke-linecap="round"/></symbol></svg>
+    <div class="tapes" aria-hidden="true">
+      <div class="tape tape--back"><div class="tape__track"><div class="tape__set"><span class="tape__item">ЕСПРЕСО</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">КАПУЧИНО</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">ЛАТЕ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">РАФ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">ФЛЕТ ВАЙТ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">МАТЧА</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">КРУАСАНИ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg></div><div class="tape__set"><span class="tape__item">ЕСПРЕСО</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">КАПУЧИНО</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">ЛАТЕ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">РАФ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">ФЛЕТ ВАЙТ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">МАТЧА</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">КРУАСАНИ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg></div></div></div>
+      <div class="tape tape--front"><div class="tape__track"><div class="tape__set"><span class="tape__item">СВІЖА ОБСМАЖКА</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">РУЧНЕ ЗАВАРЮВАННЯ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">КАВА З ХАРАКТЕРОМ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">ВИПІЧКА ЩОРАНКУ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg></div><div class="tape__set"><span class="tape__item">СВІЖА ОБСМАЖКА</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">РУЧНЕ ЗАВАРЮВАННЯ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">КАВА З ХАРАКТЕРОМ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg><span class="tape__item">ВИПІЧКА ЩОРАНКУ</span><svg class="tbean" viewBox="0 0 24 24"><use href="#bean"/></svg></div></div></div>
     </div>
 
     <!-- ===== О НАС ===== -->
@@ -545,9 +544,9 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
-  <script src="script.js?v=10"></script>
-  <script src="anime-fx.js?v=10"></script>
-  <script src="showcase.js?v=10"></script>
-  <script src="how-demo.js?v=10"></script>
+  <script src="script.js?v=11"></script>
+  <script src="anime-fx.js?v=11"></script>
+  <script src="showcase.js?v=11"></script>
+  <script src="how-demo.js?v=11"></script>
 </body>
 </html>
