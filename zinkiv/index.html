@@ -99,7 +99,7 @@ html,body{touch-action:pan-y pinch-zoom;position:relative}
 <script>
 /* сайт завжди відкривається зверху */
 try{history.scrollRestoration='manual'}catch(e){}
-if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+try{if(location.hash)history.replaceState(null,'',location.pathname+location.search)}catch(e){}
 window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});
 </script>
 

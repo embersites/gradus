@@ -1,6 +1,6 @@
 /* Сайт завжди відкривається з самого верху (навіть якщо в посиланні є #розділ) */
 try { history.scrollRestoration = 'manual'; } catch (e) {}
-if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+try { if (location.hash) history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
 window.scrollTo(0, 0);
 addEventListener('load', () => window.scrollTo(0, 0));
 
@@ -473,7 +473,7 @@ addEventListener('load', () => window.scrollTo(0, 0));
       e.preventDefault();
       closeNav();
       target.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
-      history.replaceState(null, '', id);
+      try { history.replaceState(null, '', id); } catch (err) {}
     });
   });
 
