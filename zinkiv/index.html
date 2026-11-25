@@ -84,9 +84,23 @@ footer{text-align:center;color:var(--muted);font-size:11.5px;padding:24px 0 30px
   .big-smile{width:420px;height:420px;right:4%;bottom:-120px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* фікси для телефонів: нічого не їде вбік, без зуму на полях */
+html,body{overflow-x:hidden;overflow-x:clip;max-width:100%;overscroll-behavior-x:none}
+*{-webkit-tap-highlight-color:transparent}
+input,select,textarea{font-size:16px!important}
+img,svg{max-width:100%}
+.big-smile{max-width:none}
 </style>
 </head>
 <body>
+<script>
+/* сайт завжди відкривається зверху */
+try{history.scrollRestoration='manual'}catch(e){}
+if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+window.scrollTo(0,0);addEventListener('load',function(){window.scrollTo(0,0)});
+</script>
+
 <svg width="0" height="0" style="position:absolute"><symbol id="sm" viewBox="0 0 48 48"><circle cx="24" cy="24" r="20"/><circle cx="17" cy="20" r="1.6" fill="currentColor"/><circle cx="31" cy="20" r="1.6" fill="currentColor"/><path d="M15 28c3 5 15 5 18 0"/></symbol></svg>
 
 <header class="top"><div class="wrap">
